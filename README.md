@@ -2,7 +2,7 @@
 
 ## Intro
 
-Hey, this is my landing page (I guess) built using
+Hey, this is my landing page (I guess) built using:
 
 * React
 * React Semantic UI

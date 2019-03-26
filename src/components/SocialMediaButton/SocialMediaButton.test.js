@@ -13,15 +13,14 @@ describe('Home', () => {
     expect(wrapper).toBeTruthy();
   });
 
-  it('Testing if screen is rendering', () => {
+  it('Testing if button is clickable', () => {
     const spy = sinon.spy();
 
-    const wrapper = shallow(<SocialMediaButton onClick={spy} />).dive();
+    const wrapper = mount(<SocialMediaButton onClick={spy} iconName="linkedin" />);
 
-    const linkedinButton = wrapper.find('#linkedinButton');
+    const linkedinButton = wrapper.find('#linkedinButton').first();
 
     linkedinButton.simulate('click');
     expect(spy.calledOnce).toBe(true);
-    // expect(Home.prototype.componentDidMount).to.have.property('callCount', 1);
   });
 });
