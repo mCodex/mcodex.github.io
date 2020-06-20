@@ -2,25 +2,25 @@
 import React, { PureComponent } from 'react';
 
 import { Grid, Image, Icon, Header } from 'semantic-ui-react';
-import SocialMediaButton from '../../components/socialMediaButton';
+import SocialMediaButton from '../../components/SocialMediaButton';
 
 import styles from './styles';
 
 const avatar = require('../../img/avatar.jpeg');
 
 type State = {
-  bgImage: string
+  bgImage: string,
 };
 
 const socialMediaIcons = [
   {
     iconName: 'github',
-    uri: 'https://github.com/mcodex'
+    uri: 'https://github.com/mcodex',
   },
   {
     iconName: 'linkedin',
-    uri: 'https://br.linkedin.com/in/mateus-andrade-832bb7b4'
-  }
+    uri: 'https://br.linkedin.com/in/mateus-andrade-832bb7b4',
+  },
 ];
 
 export default class extends PureComponent<*, State> {
@@ -28,7 +28,7 @@ export default class extends PureComponent<*, State> {
     super();
 
     this.state = {
-      bgImage: 'https://source.unsplash.com/collection/3178572/1600x900'
+      bgImage: 'https://source.unsplash.com/collection/3178572/1600x900',
     };
   }
 
@@ -40,7 +40,7 @@ export default class extends PureComponent<*, State> {
         style={{
           background: `linear-gradient(0deg,rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(${bgImage})`,
           backgroundSize: 'cover',
-          height: '100vh'
+          height: '100vh',
         }}
         padded
       >
