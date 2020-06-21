@@ -23,7 +23,7 @@ const Home: React.FC = () => {
       <MainContainer>
         <img src={avatarImg} alt="Mateus Andrade" />
         <h1>Mateus Andrade</h1>
-        <h3>React/NodeJS & React-Native Developer</h3>
+        <h2>React/NodeJS & React-Native Developer</h2>
         <SocialIconsContainer>
           <a
             data-testid="githubButton"
