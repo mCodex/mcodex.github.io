@@ -7,16 +7,30 @@ export default createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
   }
-  /* body, input, button {
+
+  html, body, #root {
+    height: 100%;
+    background-color: #000;
+  }
+
+  body {
+    color: #FFF;
+    -webkit-font-smoothing: antialised;
+  }
+
+  body, input, button {
     font: 16px 'Montserrat', sans-serif;
-  } */
+  }
+
   #root {
     margin: 0 auto;
   }
-  /* h1, h2, h3, h4, h5, h6, strong {
+
+  h1, h2, h3, h4, h5, h6, strong {
     font-weight: 500;
-  } */
-  /* button {
+  }
+
+  button {
     cursor: pointer;
-  } */
+  }
 `;
