@@ -18,11 +18,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-    'prettier'
-  ],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
   rules: {
     'prettier/prettier': 'error',
     'react-hooks/rules-of-hooks': 'error',
@@ -34,6 +30,8 @@ module.exports = {
     'no-unused-expressions': 'off',
     'react/prop-types': 'off',
     'import/no-duplicates': 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/explicit-function-return-type': [
       'error',
       {
@@ -54,5 +52,5 @@ module.exports = {
     'import/resolver': {
       typescript: {},
     },
-  }
+  },
 };
