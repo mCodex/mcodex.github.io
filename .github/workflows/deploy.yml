@@ -19,7 +19,7 @@ jobs:
     - uses: actions/cache@v1.1.2
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
             ${{ runner.os }}-node-
     - uses: actions/checkout@v2
@@ -35,4 +35,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./out
-        publish_branch: develop
+        publish_branch: master
