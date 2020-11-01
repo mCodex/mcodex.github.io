@@ -1,6 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
+import { DefaultSeo } from 'next-seo';
+
+import SEO from '../next-seo.config';
 
 import GloalStyle from '../src/styles/global';
 
@@ -13,6 +16,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => (
         rel="stylesheet"
       />
     </Head>
+    <DefaultSeo {...SEO} />
     <Component {...pageProps} />
     <GloalStyle />
   </>
