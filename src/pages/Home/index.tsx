@@ -1,9 +1,8 @@
 import React from 'react';
+
 import { FaLinkedin, FaGithub, FaChevronRight } from 'react-icons/fa';
 
-import avatarImg from '../../assets/img/avatar.jpeg';
-
-import { Container, Header, MainContainer, SocialIconsContainer } from './styles';
+import { Avatar, Container, Header, MainContainer, SocialIconsContainer } from './styles';
 
 const Home: React.FC = () => {
   return (
@@ -21,7 +20,7 @@ const Home: React.FC = () => {
         </a>
       </Header>
       <MainContainer>
-        <img src={avatarImg} alt="Mateus Andrade" />
+        <Avatar src="/assets/img/avatar.jpeg" alt="Mateus Andrade" />
         <h1>Mateus Andrade</h1>
         <h2>React/NodeJS & React-Native Developer</h2>
         <SocialIconsContainer>
