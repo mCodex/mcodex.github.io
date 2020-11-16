@@ -8,7 +8,7 @@ describe('Home', () => {
     const { getByText } = render(<Home />);
     const nameHeader = getByText('Mateus Andrade');
 
-    expect(nameHeader).toBeInTheDocument();
+    expect(nameHeader).toBeTruthy();
   });
 
   it("should linkedin button's href be filled ", async () => {
