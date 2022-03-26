@@ -1,18 +1,10 @@
-const withOptimizedImages = require('next-optimized-images');
+/** @type {import('next').NextConfig} */
 
-module.exports = {
-  future: {
-    webpack5: true,
+const nextConfig = {
+  reactStrictMode: true,
+  compiler: {
+    styledComponents: true,
   },
-};
+}
 
-module.exports = withOptimizedImages({
-  mozjpeg: {
-    quality: 80,
-  },
-  pngquant: {
-    speed: 3,
-    strip: true,
-    verbose: true,
-  },
-});
+module.exports = nextConfig

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { FaLinkedin, FaGithub, FaChevronRight } from 'react-icons/fa';
 
 import { Avatar, Container, Header, MainContainer, SocialIconsContainer } from './styles';

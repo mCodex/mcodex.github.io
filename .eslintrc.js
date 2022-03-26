@@ -9,6 +9,7 @@ module.exports = {
     'airbnb',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'plugin:@next/next/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -47,6 +48,8 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'react/function-component-definition': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   settings: {
     'import/resolver': {
