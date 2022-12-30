@@ -21,6 +21,8 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => (
     </Head>
     <DefaultSeo {...SEO} />
     <Component {...pageProps} />
+    {/**
+     * @ts-ignore */}
     <GloalStyle />
   </>
 );
