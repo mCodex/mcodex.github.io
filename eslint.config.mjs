@@ -98,6 +98,7 @@ export default [
 
       'react/function-component-definition': 'off',
       'react/react-in-jsx-scope': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ];

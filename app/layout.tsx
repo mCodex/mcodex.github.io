@@ -6,6 +6,7 @@ import Head from 'next/head';
 
 const montSerrat = Montserrat({
   weight: ['400', '500', '600'],
+  subsets: ['latin'],
 });
 
 export default function RootLayout({ children }: { children: ReactNode }): React.JSX.Element {
