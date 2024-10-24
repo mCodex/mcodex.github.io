@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
-    "build:gactions": "rimraf out && next build && touch out/.nojekyll && cp CNAME out/CNAME",
+    "build:gactions": "next build && touch out/.nojekyll && cp CNAME out/CNAME",
     "start": "next start"
   },
   "dependencies": {
