@@ -1,0 +1,161 @@
+@use '../../styles/variables' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(white, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba($color-primary, 0.1);
+  z-index: 1000;
+  transition: $transition-default;
+
+  &.scrolled {
+    background: rgba(white, 0.98);
+    box-shadow: 0 2px 20px rgba($color-primary-dark, 0.1);
+  }
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-family: $font-heading;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $color-primary-dark;
+  text-decoration: none;
+  transition: $transition-fast;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+
+  @media (max-width: $tablet) {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: $transition-default;
+    box-shadow: -5px 0 20px rgba($color-primary-dark, 0.1);
+
+    &.open {
+      right: 0;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+.navLink {
+  a {
+    color: $color-slate-gray;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    transition: $transition-fast;
+    padding: 0.5rem 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $color-primary;
+      transition: $transition-fast;
+    }
+
+    &:hover {
+      color: $color-primary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &.active {
+      color: $color-primary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 0.5rem;
+
+  @media (max-width: $tablet) {
+    display: flex;
+  }
+
+  :global(span) {
+    width: 25px;
+    height: 3px;
+    background: $color-primary-dark;
+    border-radius: 2px;
+    transition: $transition-fast;
+    transform-origin: center;
+  }
+
+  &.open {
+    :global(span:nth-child(1)) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    :global(span:nth-child(2)) {
+      opacity: 0;
+    }
+
+    :global(span:nth-child(3)) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba($color-primary-dark, 0.5);
+  z-index: 999;
+
+  @media (max-width: $tablet) {
+    &.open {
+      display: block;
+    }
+  }
+}

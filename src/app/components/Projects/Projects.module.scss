@@ -1,0 +1,246 @@
+@use '../../styles/variables' as *;
+
+.projects {
+  padding: 5rem 0;
+  background: $color-soft-white;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: $color-primary-dark;
+
+  @media (max-width: $tablet) {
+    font-size: 2rem;
+  }
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.125rem;
+  color: $color-slate-gray;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.statsBar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba($color-primary, 0.1);
+  color: $color-primary;
+  padding: 0.75rem 1.5rem;
+  border-radius: $border-radius;
+  font-weight: 600;
+  font-size: 1rem;
+
+  :global(svg) {
+    color: $color-accent-cyan;
+  }
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.projectCard {
+  background: white;
+  border-radius: $border-radius * 2;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba($color-primary-dark, 0.1);
+  transition: $transition-default;
+  border: 1px solid rgba($color-primary, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba($color-primary-dark, 0.15);
+  }
+}
+
+.projectHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba($color-primary, 0.1);
+}
+
+.projectImage {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, $color-primary-light 0%, rgba($color-accent-cyan, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-primary;
+  font-size: 2rem;
+  border-radius: $border-radius;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23007BFF' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  :global(span) {
+    z-index: 1;
+    position: relative;
+  }
+}
+
+.projectMeta {
+  flex: 1;
+}
+
+.projectTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $color-primary-dark;
+  margin-bottom: 0.5rem;
+}
+
+.starsCount {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: $color-accent-cyan;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.projectContent {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectDescription {
+  color: $color-slate-gray;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.techTag {
+  background: rgba($color-accent-cyan, 0.1);
+  color: $color-accent-cyan;
+  padding: 0.25rem 0.75rem;
+  border-radius: $border-radius;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.projectFooter {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba($color-primary, 0.1);
+  background: rgba($color-soft-white, 0.5);
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.codeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: $color-primary;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: $transition-default;
+  flex: 1;
+  justify-content: center;
+
+  &:hover {
+    background: darken($color-primary, 10%);
+    transform: translateY(-1px);
+  }
+}
+
+.demoButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: $color-primary;
+  border: 1px solid $color-primary;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: $transition-default;
+  flex: 1;
+  justify-content: center;
+
+  &:hover {
+    background: $color-primary;
+    color: white;
+    transform: translateY(-1px);
+  }
+}
+
+.viewMoreContainer {
+  text-align: center;
+}
+
+.viewMoreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: $color-primary;
+  border: 2px solid $color-primary;
+  padding: 0.75rem 1.5rem;
+  border-radius: $border-radius;
+  font-weight: 600;
+  transition: $transition-default;
+
+  &:hover {
+    background: $color-primary;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+}

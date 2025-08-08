@@ -1,0 +1,23 @@
+// ----- Primary Palette -----
+$color-primary: #007BFF;  // Main buttons, active links
+$color-primary-dark: #0A2540; // Headers, nav background
+$color-primary-light: #E6F4FF; // Background accents, hover states
+
+// ----- Secondary Palette -----
+$color-accent-cyan: #00C4CC; // Interactive highlights
+$color-slate-gray: #6B7280;  // Secondary text, borders
+$color-soft-white: #F9FAFB;  // Main background
+
+// ----- Status Colors -----
+$color-success: #00B37E; // Success states
+$color-warning: #FFB020; // Warnings
+$color-error: #E53935;   // Errors
+
+// ----- Typography -----
+$font-heading: var(--font-poppins), 'Inter', sans-serif;
+$font-body: var(--font-inter), 'Poppins', sans-serif;
+
+// ----- Utilities -----
+$border-radius: 6px;
+$transition-fast: 0.2s ease-in-out;
+$transition-default: 0.3s ease-in-out;

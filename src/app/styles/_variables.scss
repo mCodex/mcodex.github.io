@@ -1,0 +1,29 @@
+// ----- Primary Palette -----
+$color-primary: #007BFF !default;  // Main buttons, active links
+$color-primary-dark: #0A2540 !default; // Headers, nav background
+$color-primary-light: #E6F4FF !default; // Background accents, hover states
+
+// ----- Secondary Palette -----
+$color-accent-cyan: #00C4CC !default; // Interactive highlights
+$color-slate-gray: #6B7280 !default;  // Secondary text, borders
+$color-soft-white: #F9FAFB !default;  // Main background
+
+// ----- Status Colors -----
+$color-success: #00B37E !default; // Success states
+$color-warning: #FFB020 !default; // Warnings
+$color-error: #E53935 !default;   // Errors
+
+// ----- Typography -----
+$font-heading: var(--font-poppins), 'Inter', sans-serif !default;
+$font-body: var(--font-inter), 'Poppins', sans-serif !default;
+
+// ----- Utilities -----
+$border-radius: 6px !default;
+$transition-fast: 0.2s ease-in-out !default;
+$transition-default: 0.3s ease-in-out !default;
+
+// ----- Responsive breakpoints -----
+$mobile: 480px !default;
+$tablet: 768px !default;
+$desktop: 1024px !default;
+$wide: 1200px !default;
