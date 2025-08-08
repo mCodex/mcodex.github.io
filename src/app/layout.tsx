@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.scss";
 
@@ -37,9 +37,13 @@ export const metadata: Metadata = {
     description: "React Native, React.js, and Node.js developer passionate about creating exceptional mobile and web experiences.",
     creator: "@mcodex",
   },
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#007BFF",
 };
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: "#007BFF"
+}
 
 export default function RootLayout({
   children,
