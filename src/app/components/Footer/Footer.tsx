@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styles from './Footer.module.scss';
 import { TbBrandGithub, TbBrandLinkedin, TbBrandX } from 'react-icons/tb';
 

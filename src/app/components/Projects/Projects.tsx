@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styles from './Projects.module.scss';
 import { TbBrandGithub, TbExternalLink, TbStar } from 'react-icons/tb';
 
