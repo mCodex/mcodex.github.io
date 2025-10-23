@@ -1,0 +1,431 @@
+/**
+ * SCSS Mixins Library
+ * 
+ * Reusable mixins to reduce code duplication and improve consistency.
+ * These mixins follow DRY principles and promote maintainability.
+ * 
+ * Usage:
+ * @include mixin-name($param1, $param2);
+ */
+
+@use './variables' as *;
+
+// ===== Flexbox Utilities =====
+
+/** Centers content using flexbox */
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/** Space-between layout for navigation bars */
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/** Column layout direction */
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/** Flex with custom gap */
+@mixin flex-gap($gap) {
+  display: flex;
+  gap: $gap;
+}
+
+// ===== Text Utilities =====
+
+/** Truncate text to single line with ellipsis */
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/** Clamp text to specified number of lines */
+@mixin text-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/** Gradient text effect */
+@mixin text-gradient($start: $color-primary, $end: $color-accent-cyan) {
+  background: linear-gradient(135deg, $start 0%, $end 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ===== Glass Effect =====
+
+/** Glassmorphism effect with customizable blur */
+@mixin glass($blur: $glass-blur, $opacity: 0.85) {
+  background: rgba(250, 251, 252, $opacity);
+  backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0.5rem 2rem rgba($color-primary-dark, 0.08),
+              inset 0 0.0625rem 0 rgba(255, 255, 255, 0.5);
+}
+
+/** Enhanced glass effect with stronger blur */
+@mixin glass-strong {
+  @include glass($glass-blur-strong, 0.95);
+}
+
+/** Light glass effect with subtle blur */
+@mixin glass-light {
+  @include glass($glass-blur-light, 0.75);
+}
+
+// ===== Shadows =====
+
+/** Shadow with elevation */
+@mixin shadow($level: 'md') {
+  @if $level == 'sm' {
+    box-shadow: $shadow-sm;
+  } @else if $level == 'md' {
+    box-shadow: $shadow-md;
+  } @else if $level == 'lg' {
+    box-shadow: $shadow-lg;
+  } @else if $level == 'xl' {
+    box-shadow: $shadow-xl;
+  }
+}
+
+/** Glass shadow combination */
+@mixin shadow-glass($level: 'md') {
+  @if $level == 'sm' {
+    box-shadow: $shadow-glass-sm;
+  } @else if $level == 'md' {
+    box-shadow: $shadow-glass-md;
+  } @else if $level == 'lg' {
+    box-shadow: $shadow-glass-lg;
+  } @else if $level == 'xl' {
+    box-shadow: $shadow-glass-xl;
+  }
+}
+
+// ===== Buttons =====
+
+/** Base button styling */
+@mixin button-base($padding: 1rem 2rem) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: $padding;
+  border-radius: $border-radius-lg;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all $transition-default;
+  cursor: pointer;
+  border: none;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  // Shine effect on hover
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left $transition-default;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+/** Primary button style */
+@mixin button-primary {
+  @include button-base;
+  background: linear-gradient(135deg, $color-primary 0%, color.adjust($color-primary, $lightness: -5%) 100%);
+  color: white;
+  box-shadow: 0 0.25rem 0.9375rem rgba($color-primary, 0.3);
+
+  &:hover {
+    background: linear-gradient(135deg, color.adjust($color-primary, $lightness: -8%) 0%, color.adjust($color-primary, $lightness: -12%) 100%);
+    transform: translateY(-0.1875rem);
+    box-shadow: 0 0.5rem 2rem rgba($color-primary, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/** Secondary button style */
+@mixin button-secondary {
+  @include button-base;
+  background: linear-gradient(135deg, rgba($color-primary, 0.1) 0%, rgba($color-accent-cyan, 0.05) 100%);
+  color: $color-primary;
+  border: 1.5px solid rgba($color-primary, 0.25);
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($color-primary, 0.15) 0%, rgba($color-accent-cyan, 0.1) 100%);
+    transform: translateY(-0.1875rem);
+    border-color: rgba($color-primary, 0.4);
+    box-shadow: 0 0.25rem 0.9375rem rgba($color-primary, 0.15);
+  }
+}
+
+/** Outline button style */
+@mixin button-outline {
+  @include button-base;
+  background: transparent;
+  color: $color-primary;
+  border: 2px solid $color-primary;
+
+  &:hover {
+    background: $color-primary;
+    color: white;
+    transform: translateY(-0.1875rem);
+    box-shadow: 0 0.5rem 2rem rgba($color-primary, 0.3);
+  }
+}
+
+// ===== Cards =====
+
+/** Base card styling */
+@mixin card-base {
+  background: $color-glass-white;
+  backdrop-filter: blur($glass-blur);
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all $transition-default;
+  box-shadow: 0 0.5rem 2rem rgba($color-primary-dark, 0.08),
+              inset 0 0.0625rem 0 rgba(255, 255, 255, 0.5);
+}
+
+/** Card with hover lift effect */
+@mixin card-hoverable {
+  @include card-base;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1rem 3rem rgba($color-primary-dark, 0.12),
+                inset 0 0.0625rem 0 rgba(255, 255, 255, 0.5);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(230, 244, 255, 0.4) 100%);
+    border-color: rgba($color-primary, 0.2);
+  }
+}
+
+// ===== Badges =====
+
+/** Base badge styling */
+@mixin badge-base($bg, $color) {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: $border-radius;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: $bg;
+  color: $color;
+  white-space: nowrap;
+  border: 1px solid rgba($color, 0.2);
+  transition: all $transition-default;
+}
+
+/** Primary badge */
+@mixin badge-primary {
+  @include badge-base(rgba($color-primary, 0.1), $color-primary);
+  border-color: rgba($color-primary, 0.2);
+
+  &:hover {
+    background: rgba($color-primary, 0.15);
+    border-color: rgba($color-primary, 0.4);
+  }
+}
+
+/** Success badge */
+@mixin badge-success {
+  @include badge-base(rgba($color-success, 0.1), $color-success);
+  border-color: rgba($color-success, 0.2);
+}
+
+/** Warning badge */
+@mixin badge-warning {
+  @include badge-base(rgba($color-warning, 0.1), $color-warning);
+  border-color: rgba($color-warning, 0.2);
+}
+
+// ===== Hover Effects =====
+
+/** Lift effect on hover */
+@mixin hover-lift($y: -0.5rem) {
+  transition: transform $transition-default, box-shadow $transition-default;
+
+  &:hover {
+    transform: translateY($y);
+  }
+}
+
+/** Scale effect on hover */
+@mixin hover-scale($scale: 1.05) {
+  transition: transform $transition-default;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+/** Opacity effect on hover */
+@mixin hover-opacity($opacity: 0.8) {
+  transition: opacity $transition-default;
+
+  &:hover {
+    opacity: $opacity;
+  }
+}
+
+/** Underline animation on hover */
+@mixin hover-underline {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $color-primary 0%, $color-accent-cyan 100%);
+    transition: width $transition-fast;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+// ===== Responsive Utilities =====
+
+/** Responsive padding */
+@mixin responsive-padding(
+  $desktop: 1.5rem,
+  $tablet: 1rem,
+  $mobile: 0.75rem
+) {
+  padding: $desktop;
+
+  @media (max-width: $tablet) {
+    padding: $tablet;
+  }
+
+  @media (max-width: $mobile) {
+    padding: $mobile;
+  }
+}
+
+/** Responsive font size */
+@mixin responsive-font(
+  $desktop: 1rem,
+  $tablet: 0.95rem,
+  $mobile: 0.9rem
+) {
+  font-size: $desktop;
+
+  @media (max-width: $tablet) {
+    font-size: $tablet;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: $mobile;
+  }
+}
+
+/** Responsive margin */
+@mixin responsive-margin(
+  $desktop: 2rem,
+  $tablet: 1.5rem,
+  $mobile: 1rem
+) {
+  margin: $desktop;
+
+  @media (max-width: $tablet) {
+    margin: $tablet;
+  }
+
+  @media (max-width: $mobile) {
+    margin: $mobile;
+  }
+}
+
+// ===== Animations =====
+
+/** Fade in animation */
+@mixin animate-fade-in($duration: 0.6s, $delay: 0s) {
+  animation: fadeIn $duration ease-out $delay both;
+}
+
+/** Slide up animation */
+@mixin animate-slide-up($duration: 0.8s, $delay: 0s) {
+  animation: slideInUp $duration ease-out $delay both;
+}
+
+/** Scale in animation */
+@mixin animate-scale-in($duration: 0.6s, $delay: 0s) {
+  animation: scaleIn $duration ease-out $delay both;
+}
+
+/** Bounce animation */
+@mixin animate-bounce($duration: 2.5s) {
+  animation: bounce $duration ease-in-out infinite;
+}
+
+// ===== Utilities =====
+
+/** Absolutely center an element */
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/** Fixed center (for modals, etc) */
+@mixin fixed-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/** Clear floats */
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/** Visually hide but keep accessible */
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
