@@ -25,37 +25,37 @@
   width: 100%;
   height: 100%;
   display: block;
-  opacity: 0.5;
+  opacity: 0.25;
 
   @media (max-width: $mobile) {
-    opacity: 0.35;
+    opacity: 0.15;
   }
 }
 
 /** Individual sparkle circle with subtle animation */
 .sparkle {
-  filter: drop-shadow(0 0 1px rgba(0, 196, 204, 0.2));
-  animation: sparkleSubtle var(--duration, 3s) ease-in-out var(--delay, 0s) infinite;
+  filter: drop-shadow(0 0 0.5px rgba(0, 153, 170, 0.15));  // Much subtler shadow
+  animation: sparkleSubtle var(--duration, 5s) ease-in-out var(--delay, 0s) infinite;
   transform-origin: center;
 }
 
 /**
  * Subtle sparkle animation keyframes
- * Creates a very gentle twinkling effect with minimal opacity changes
+ * Creates an extremely gentle twinkling effect with minimal opacity changes
  * WCAG 2.2: No flashing more than 3 times per second (avoiding seizure triggers)
  */
 @keyframes sparkleSubtle {
   0% {
-    opacity: 0.1;
-    transform: scale(0.8);
+    opacity: 0.05;
+    transform: scale(0.9);
   }
   50% {
-    opacity: 0.4;
+    opacity: 0.25;
     transform: scale(1);
   }
   100% {
-    opacity: 0.1;
-    transform: scale(0.8);
+    opacity: 0.05;
+    transform: scale(0.9);
   }
 }
 
@@ -68,10 +68,10 @@
   height: 100%;
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(0, 196, 204, 0.01) 0%,
-    rgba(7, 123, 255, 0.01) 50%,
+    rgba(0, 153, 170, 0.005) 0%,
+    rgba(0, 102, 204, 0.005) 50%,
     transparent 100%
   );
   pointer-events: none;
-  opacity: 0.3;
+  opacity: 0.15;  // Barely perceptible
 }

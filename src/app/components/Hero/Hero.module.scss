@@ -295,17 +295,32 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  color: $color-slate-gray;
+  color: $color-primary;
   animation: bounce 2.5s ease-in-out infinite;
   cursor: pointer;
-  transition: color $transition-default;
-  z-index: 10;
+  transition: all $transition-default;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba($color-primary, 0.1);
+  border: 2px solid rgba($color-primary, 0.2);
+  backdrop-filter: blur(10px);
 
   &:hover {
-    color: $color-primary;
+    color: white;
+    background: rgba($color-primary, 0.25);
+    border-color: rgba($color-primary, 0.4);
+    box-shadow: 0 4px 15px rgba($color-primary, 0.2);
   }
 
   @media (max-width: $mobile) {
     bottom: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
 }

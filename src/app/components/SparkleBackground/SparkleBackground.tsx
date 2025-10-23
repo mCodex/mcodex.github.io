@@ -17,9 +17,9 @@ interface Sparkle {
   id: number;
   x: number;
   y: number;
-  size: number;
-  duration: number;
-  delay: number;
+  size: number;  // 0.3-0.7px - extremely discrete
+  duration: number;  // 5-8 seconds - very slow
+  delay: number;  // 0-6 seconds - staggered
 }
 
 /**
@@ -42,20 +42,20 @@ interface Sparkle {
  * 
  * @example
  * // Usage in hero or full-screen sections
- * <SparkleBackground count={8} />
+ * <SparkleBackground count={6} />
  * 
- * @param {number} [count=8] - Number of sparkles to render (default: 8 for subtlety)
+ * @param {number} [count=6] - Number of sparkles to render (default: 6 for maximum subtlety)
  */
-const SparkleBackground: React.FC<{ count?: number }> = ({ count = 8 }) => {
+const SparkleBackground: React.FC<{ count?: number }> = ({ count = 6 }) => {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
 
   /**
    * Initialize sparkles with random properties
    * Generates sparkles with:
    * - Random positions across the viewport
-   * - Very small sizes (0.5-1.2px for discretion)
-   * - Staggered animation timings (slower, 3-5 second cycles)
-   * - Lower opacity range
+   * - Extremely small sizes (0.3-0.7px for maximum discretion)
+   * - Very slow animation timings (5-8 second cycles)
+   * - Minimal opacity range (barely visible)
    */
   useEffect(() => {
     const generateSparkles = (): Sparkle[] => {
@@ -63,9 +63,9 @@ const SparkleBackground: React.FC<{ count?: number }> = ({ count = 8 }) => {
         id: index,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 0.7 + 0.5,  // 0.5-1.2px instead of 1-3px
-        duration: Math.random() * 2 + 3,  // 3-5 seconds instead of 2-4 seconds
-        delay: Math.random() * 4,         // Up to 4 second delay for stagger
+        size: Math.random() * 0.4 + 0.3,  // 0.3-0.7px (even smaller)
+        duration: Math.random() * 3 + 5,  // 5-8 seconds (much slower)
+        delay: Math.random() * 6,         // Up to 6 second delay for more stagger
       }));
     };
 
@@ -82,10 +82,10 @@ const SparkleBackground: React.FC<{ count?: number }> = ({ count = 8 }) => {
         preserveAspectRatio="none"
       >
         <defs>
-          {/* Gradient definition for sparkle glow */}
+          {/* Gradient definition for sparkle glow - very subtle */}
           <radialGradient id="sparkleGradient" r="50%">
-            <stop offset="0%" stopColor="#00C4CC" stopOpacity="1" />
-            <stop offset="100%" stopColor="#007BFF" stopOpacity="0.3" />
+            <stop offset="0%" stopColor="#E6F4FF" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#0099AA" stopOpacity="0.1" />
           </radialGradient>
         </defs>
 
