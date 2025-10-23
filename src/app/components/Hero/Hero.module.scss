@@ -29,6 +29,7 @@
   @media (max-width: $mobile) {
     padding-top: 120px;
     min-height: calc(100vh - 40px);
+    padding-bottom: 80px;
   }
 
   // Smooth gradient overlay for depth
@@ -318,7 +319,7 @@
   }
 
   @media (max-width: $mobile) {
-    bottom: 1rem;
+    bottom: 1.5rem;
     width: 40px;
     height: 40px;
     border-radius: 50%;
