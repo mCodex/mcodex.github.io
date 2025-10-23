@@ -1,6 +1,17 @@
 @use '../../styles/variables' as *;
 @use 'sass:color';
 
+/**
+ * Hero Section Styles
+ * 
+ * Design Language: Apple Liquid Glass
+ * - Smooth gradients with subtle transparency
+ * - Glassmorphism effects with frosted layers
+ * - Soft, rounded corners and subtle shadows
+ * - Smooth, elegant animations
+ */
+
+/** Hero Section - Main landing area with liquid glass aesthetic */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -9,32 +20,29 @@
   background: linear-gradient(135deg, $color-soft-white 0%, $color-primary-light 100%);
   position: relative;
   overflow: hidden;
-  padding-top: 80px; // Account for fixed navigation
+  padding-top: 80px;
 
   @media (max-width: $tablet) {
-    padding-top: 100px; // Increase padding on tablet and mobile
+    padding-top: 100px;
   }
 
   @media (max-width: $mobile) {
-    padding-top: 120px; // Even more padding on mobile for better spacing
-    min-height: calc(100vh - 40px); // Slightly reduce height to accommodate padding
+    padding-top: 120px;
+    min-height: calc(100vh - 40px);
   }
 
-  &::before {
+  // Smooth gradient overlay for depth
+  &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23007BFF' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='m0 40l40-40h-40v40zm40 0v-40h-40l40 40z'/%3E%3C/g%3E%3C/svg%3E");
-    animation: float 20s ease-in-out infinite;
+    background: radial-gradient(ellipse at 20% 50%, rgba($color-primary, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba($color-accent-cyan, 0.04) 0%, transparent 50%);
+    pointer-events: none;
   }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(1deg); }
 }
 
 .heroContent {
@@ -42,6 +50,7 @@
   z-index: 2;
   position: relative;
   padding: 1rem;
+  animation: fadeInUp 0.8s ease-out;
 
   @media (max-width: $tablet) {
     padding: 1rem 0.5rem;
@@ -52,6 +61,7 @@
   }
 }
 
+/** Avatar with enhanced hover effects and shadow */
 .avatar {
   width: 150px;
   height: 150px;
@@ -60,13 +70,16 @@
   position: relative;
   overflow: hidden;
   border: 4px solid $color-primary;
-  box-shadow: 0 8px 32px rgba($color-primary, 0.2);
+  box-shadow: 0 8px 32px rgba($color-primary, 0.2),
+              0 0 0 0 rgba($color-primary, 0.1);
   transition: $transition-default;
+  animation: slideInDown 0.8s ease-out;
 
   @media (max-width: $tablet) {
     width: 120px;
     height: 120px;
     margin: 0 auto 1.5rem;
+    border: 3px solid $color-primary;
   }
 
   @media (max-width: $mobile) {
@@ -77,8 +90,9 @@
   }
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba($color-primary, 0.3);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 16px 48px rgba($color-primary, 0.35),
+                0 0 30px rgba($color-accent-cyan, 0.2);
   }
 
   :global(img) {
@@ -88,15 +102,18 @@
   }
 }
 
+/** Main title with gradient and improved typography */
 .title {
   font-size: 3.5rem;
   font-weight: 700;
   color: $color-primary-dark;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, $color-primary-dark 0%, $color-primary 100%);
+  background: linear-gradient(135deg, $color-primary-dark 0%, $color-primary 50%, $color-accent-cyan 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -1px;
+  line-height: 1.1;
 
   @media (max-width: $tablet) {
     font-size: 2.5rem;
@@ -107,26 +124,40 @@
   }
 }
 
+/** Subtitle with enhanced color and spacing */
 .subtitle {
   font-size: 1.5rem;
   color: $color-accent-cyan;
   font-weight: 500;
   margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease-out 0.3s both;
 
   @media (max-width: $tablet) {
     font-size: 1.25rem;
   }
+
+  @media (max-width: $mobile) {
+    font-size: 1.1rem;
+  }
 }
 
+/** Description text with improved readability */
 .description {
   font-size: 1.125rem;
   color: $color-slate-gray;
   max-width: 600px;
   margin: 0 auto 3rem;
-  line-height: 1.7;
+  line-height: 1.8;
+  animation: fadeIn 1s ease-out 0.4s both;
 
   @media (max-width: $tablet) {
     font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -136,41 +167,19 @@
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 3rem;
+  animation: fadeIn 1s ease-out 0.5s both;
 }
 
+/** Individual skill tag with enhanced styling and interactions */
 .skillTag {
-  background: rgba($color-primary, 0.1);
+  background: linear-gradient(135deg, rgba($color-primary, 0.1) 0%, rgba($color-accent-cyan, 0.05) 100%);
   color: $color-primary;
-  padding: 0.5rem 1rem;
-  border-radius: $border-radius;
+  padding: 0.6rem 1.2rem;
+  border-radius: $border-radius * 2;
   font-weight: 500;
   font-size: 0.875rem;
-  border: 1px solid rgba($color-primary, 0.2);
-  transition: $transition-default;
-
-  &:hover {
-    background: rgba($color-primary, 0.15);
-    transform: translateY(-2px);
-  }
-}
-
-.cta {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.button {
-  padding: 1rem 2rem;
-  border-radius: $border-radius;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: $transition-default;
+  border: 1.5px solid rgba($color-primary, 0.25);
+  transition: all $transition-default;
   position: relative;
   overflow: hidden;
 
@@ -181,26 +190,81 @@
     left: -100%;
     width: 100%;
     height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left $transition-default;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($color-primary, 0.15) 0%, rgba($color-accent-cyan, 0.1) 100%);
+    transform: translateY(-3px);
+    border-color: rgba($color-primary, 0.4);
+    box-shadow: 0 4px 12px rgba($color-primary, 0.15);
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+/** CTA buttons container with responsive layout */
+.cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeIn 1s ease-out 0.6s both;
+
+  @media (max-width: $mobile) {
+    gap: 0.75rem;
+  }
+}
+
+/** Button base styles with modern effects */
+.button {
+  padding: 1rem 2rem;
+  border-radius: $border-radius * 2;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all $transition-default;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: $transition-default;
+    transition: left $transition-default;
   }
 
   &:hover::before {
     left: 100%;
   }
 
+  /** Primary button style */
   &.primary {
-    background: $color-primary;
+    background: linear-gradient(135deg, $color-primary 0%, color.adjust($color-primary, $lightness: -5%) 100%);
     color: white;
-    box-shadow: 0 4px 15px rgba($color-primary, 0.3);
+    box-shadow: 0 4px 15px rgba($color-primary, 0.3),
+                0 0 30px rgba($color-primary, 0.1);
 
     &:hover {
-      background: color.adjust($color-primary, $lightness: -10%);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba($color-primary, 0.4);
+      background: linear-gradient(135deg, color.adjust($color-primary, $lightness: -8%) 0%, color.adjust($color-primary, $lightness: -12%) 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba($color-primary, 0.4),
+                  0 0 40px rgba($color-primary, 0.15);
     }
   }
 
+  /** Secondary button style */
   &.secondary {
     background: transparent;
     color: $color-primary;
@@ -209,23 +273,39 @@
     &:hover {
       background: $color-primary;
       color: white;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba($color-primary, 0.3);
     }
+  }
+
+  @media (max-width: $mobile) {
+    padding: 1rem 1.75rem;
+    font-size: 0.95rem;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
+/** Animated scroll indicator */
 .scrollIndicator {
   position: absolute;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
   color: $color-slate-gray;
-  animation: bounce 2s infinite;
+  animation: bounce 2.5s ease-in-out infinite;
   cursor: pointer;
-}
+  transition: color $transition-default;
+  z-index: 10;
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-  40% { transform: translateX(-50%) translateY(-10px); }
-  60% { transform: translateX(-50%) translateY(-5px); }
+  &:hover {
+    color: $color-primary;
+  }
+
+  @media (max-width: $mobile) {
+    bottom: 1rem;
+  }
 }

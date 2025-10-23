@@ -2,6 +2,19 @@
 import styles from './Projects.module.scss';
 import { TbBrandGithub, TbExternalLink, TbStar } from 'react-icons/tb';
 
+/**
+ * Project interface defining the structure of project data
+ * @interface Project
+ * @property {number} id - Unique identifier for the project
+ * @property {string} title - Project name/title
+ * @property {string} description - Detailed project description
+ * @property {string[]} technologies - Array of tech stack used
+ * @property {string} [githubUrl] - Optional GitHub repository URL
+ * @property {string} [liveUrl] - Optional live demo URL
+ * @property {string} icon - Emoji or icon identifier for visual representation
+ * @property {number} stars - GitHub stars count for popularity
+ * @property {string} [category] - Optional project category/type
+ */
 interface Project {
   id: number;
   title: string;
@@ -11,9 +24,29 @@ interface Project {
   liveUrl?: string;
   icon: string;
   stars: number;
+  category?: string;
 }
 
+/**
+ * Projects Component - Showcases featured open-source and professional projects
+ * 
+ * Features:
+ * - Responsive grid layout that adapts to different screen sizes
+ * - Glassmorphism card design with hover animations
+ * - GitHub stars display and statistics
+ * - Technology tag badges
+ * - Links to GitHub repositories and live demos
+ * - Animated stats bar showing cumulative GitHub stars
+ * 
+ * @component
+ * @returns {React.ReactElement} The projects showcase section
+ * 
+ * @example
+ * // Usage in page layout
+ * <Projects />
+ */
 const Projects: React.FC = () => {
+  /** Array of featured projects with detailed metadata */
   const projects: Project[] = [
     {
       id: 1,
@@ -22,7 +55,8 @@ const Projects: React.FC = () => {
       technologies: ["React Native", "Java", "Android", "iOS", "Keychain", "Encryption"],
       githubUrl: "https://github.com/mCodex/react-native-sensitive-info",
       icon: "🔐",
-      stars: 987
+      stars: 987,
+      category: "Security"
     },
     {
       id: 2,
@@ -31,7 +65,8 @@ const Projects: React.FC = () => {
       technologies: ["React Native", "TypeScript", "Nitro Modules", "JSI", "Safari", "Chrome"],
       githubUrl: "https://github.com/mCodex/react-native-inappbrowser-nitro",
       icon: "🧑‍💻",
-      stars: 6
+      stars: 6,
+      category: "Browser"
     },
     {
       id: 3,
@@ -40,7 +75,8 @@ const Projects: React.FC = () => {
       technologies: ["React Native", "TypeScript", "UI/UX", "Animations"],
       githubUrl: "https://github.com/mCodex/react-native-rooster",
       icon: "🐔",
-      stars: 29
+      stars: 29,
+      category: "UI Library"
     },
     {
       id: 4,
@@ -49,11 +85,12 @@ const Projects: React.FC = () => {
       technologies: ["React Native", "TypeScript", "Nitro Modules", "Payment", "PagSeguro", "Hooks"],
       githubUrl: "https://github.com/mCodex/react-native-plugpag-nitro",
       icon: "💳",
-      stars: 1
+      stars: 1,
+      category: "Payment"
     },
   ];
 
-  // Calculate total stars
+  /** Calculate total GitHub stars across all projects */
   const totalStars = projects.reduce((sum, project) => sum + project.stars, 0);
 
   return (

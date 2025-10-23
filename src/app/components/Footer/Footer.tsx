@@ -2,8 +2,44 @@
 import styles from './Footer.module.scss';
 import { TbBrandGithub, TbBrandLinkedin, TbBrandX } from 'react-icons/tb';
 
+/**
+ * Footer Component - Site footer with social links, contact info, and navigation
+ * 
+ * Features:
+ * - Responsive grid layout for desktop and mobile
+ * - Social media links with hover animations
+ * - Quick navigation links
+ * - Contact information
+ * - Copyright and attribution
+ * - Modern glassmorphism effects and gradients
+ * 
+ * @component
+ * @returns {React.ReactElement} The footer section with all meta information
+ * 
+ * @example
+ * // Usage at the bottom of pages
+ * <Footer />
+ */
 const Footer: React.FC = () => {
+  /** Get current year dynamically for copyright notice */
   const currentYear = new Date().getFullYear();
+
+  /**
+   * Social media links configuration
+   * @type {Array<{href: string, label: string, icon: React.ReactNode}>}
+   */
+  const socialLinks = [
+    {
+      href: "https://github.com/mcodex",
+      label: "GitHub",
+      icon: TbBrandGithub
+    },
+    {
+      href: "https://www.linkedin.com/in/mat-andrade/",
+      label: "LinkedIn",
+      icon: TbBrandLinkedin
+    }
+  ];
 
   return (
     <footer className={styles.footer}>
@@ -15,25 +51,22 @@ const Footer: React.FC = () => {
           </div>
 
           <div className={styles.socialLinks}>
-            <a 
-              href="https://github.com/mcodex" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.socialLink}
-              aria-label="GitHub"
-            >
-              <TbBrandGithub size={24} />
-            </a>
-            
-            <a 
-              href="https://www.linkedin.com/in/mat-andrade/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.socialLink}
-              aria-label="LinkedIn"
-            >
-              <TbBrandLinkedin size={24} />
-            </a>
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a 
+                  key={social.label}
+                  href={social.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={styles.socialLink}
+                  aria-label={social.label}
+                  title={social.label}
+                >
+                  <Icon size={24} />
+                </a>
+              );
+            })}
           </div>
 
           <div className={styles.contact}>

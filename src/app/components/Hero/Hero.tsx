@@ -2,8 +2,33 @@
 
 import styles from './Hero.module.scss';
 import { TbChevronDown } from 'react-icons/tb';
+import SparkleBackground from '../SparkleBackground/SparkleBackground';
 
+/**
+ * Hero Component - Main landing section of the portfolio
+ * 
+ * Displays the primary introduction with:
+ * - Animated sparkle background for visual interest
+ * - Profile avatar with hover effects
+ * - Name and title with gradient text
+ * - Compelling description
+ * - Skill tags with modern styling
+ * - Call-to-action buttons
+ * - Animated scroll indicator
+ * 
+ * Design: Apple Liquid Glass aesthetic with glassmorphism effects
+ * 
+ * @component
+ * @returns {React.ReactElement} The hero section with all intro elements
+ * 
+ * @example
+ * // Usage in page layout
+ * <section id="home">
+ *   <Hero />
+ * </section>
+ */
 const Hero: React.FC = () => {
+  /** Array of key technologies and skills */
   const skills = [
     'React Native',
     'React.js',
@@ -15,6 +40,10 @@ const Hero: React.FC = () => {
     'Mobile Development'
   ];
 
+  /**
+   * Smoothly scrolls to the projects section
+   * Uses native scroll API with smooth behavior
+   */
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
     projectsSection?.scrollIntoView({ behavior: 'smooth' });
@@ -22,6 +51,9 @@ const Hero: React.FC = () => {
 
   return (
     <section className={styles.hero}>
+      {/* Sparkle background animation - subtle and discrete */}
+      <SparkleBackground count={8} />
+      
       <div className="container">
         <div className={styles.heroContent}>
           <div className={styles.avatar}>

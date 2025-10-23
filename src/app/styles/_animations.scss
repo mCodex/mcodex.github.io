@@ -1,0 +1,276 @@
+/**
+ * Animation Library - Reusable keyframe animations
+ * 
+ * Contains all global animations used throughout the site including:
+ * - Sparkle and glow effects
+ * - Movement animations (float, bounce, slide)
+ * - Transitions (fade, scale)
+ * - Interactive effects
+ * 
+ * Design Philosophy: Smooth, subtle animations that enhance UX
+ * without overwhelming the user experience
+ */
+
+// ===== Sparkle Effects =====
+
+/**
+ * Sparkle animation - creates a twinkling light effect
+ * Duration: 3s, infinite loop
+ * Used for: Background sparkles, accent elements
+ */
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/**
+ * Shimmer animation - horizontal light sweep effect
+ * Duration: 2s, infinite loop
+ * Used for: Loading states, dynamic backgrounds
+ */
+@keyframes shimmer {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/**
+ * Glow pulse animation - pulsing glow effect
+ * Duration: 2s, infinite loop
+ * Used for: CTAs, important elements
+ */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 196, 204, 0.3),
+                0 0 20px rgba(7, 123, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 196, 204, 0.6),
+                0 0 40px rgba(7, 123, 255, 0.3);
+  }
+}
+
+/**
+ * Float animation - gentle floating motion
+ * Duration: 4s, infinite loop
+ * Used for: Background elements, decorative items
+ */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-12px) translateX(8px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(0px);
+  }
+  75% {
+    transform: translateY(-12px) translateX(-8px);
+  }
+}
+
+/**
+ * Bounce animation - elastic bouncing motion
+ * Duration: 2.5s, infinite loop
+ * Used for: Scroll indicators, CTAs
+ */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-12px);
+  }
+  60% {
+    transform: translateY(-6px);
+  }
+}
+
+/**
+ * Slide up animation - elements sliding up into view
+ * Duration: 0.8s, ease-out
+ * Used for: Page load, scroll reveal
+ */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * Slide down animation - elements sliding down into view
+ * Duration: 0.8s, ease-out
+ * Used for: Hero avatar, dropdown items
+ */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * Fade in animation - simple opacity transition
+ * Duration: 1s, ease-out
+ * Used for: General fade transitions
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/**
+ * Scale in animation - elements scaling up while appearing
+ * Duration: 0.6s, ease-out
+ * Used for: Cards, buttons, interactive elements
+ */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/**
+ * Rotate in animation - elements rotating while appearing
+ * Duration: 0.8s, ease-out
+ * Used for: Icons, decorative elements
+ */
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+// ===== Glass Effect Animations =====
+
+/**
+ * Glass shimmer animation - light sweep across glass
+ * Duration: 3s, infinite loop
+ * Used for: Glass effect enhancement
+ */
+@keyframes glassShimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/**
+ * Frost effect animation - frosting transitions
+ * Duration: 1.5s, ease-in-out
+ * Used for: Glass blur transitions
+ */
+@keyframes frostEffect {
+  0% {
+    backdrop-filter: blur(0px);
+  }
+  50% {
+    backdrop-filter: blur(15px);
+  }
+  100% {
+    backdrop-filter: blur(12px);
+  }
+}
+
+// ===== Hover Effects =====
+
+/**
+ * Lift animation - element lifts on hover
+ * Used for: Buttons, cards, interactive elements
+ */
+@keyframes lift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-4px);
+  }
+}
+
+/**
+ * Gradient shift animation - animated gradient background
+ * Duration: 3s, infinite loop
+ * Used for: Gradient backgrounds, accent elements
+ */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// ===== Underline Animations =====
+
+/**
+ * Underline expand animation - underline expands from left
+ * Duration: 0.3s, ease-out
+ * Used for: Link hover effects
+ */
+@keyframes underlineExpand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+// ===== Stagger Animation =====
+
+/**
+ * Stagger animation for list items - sequential reveal
+ * Used in conjunction with nth-child selectors
+ */
+@for $i from 1 through 10 {
+  .stagger-#{$i} {
+    animation: slideInUp 0.6s ease-out #{$i * 0.1}s both;
+  }
+}

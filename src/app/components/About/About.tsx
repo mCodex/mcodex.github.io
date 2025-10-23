@@ -3,7 +3,36 @@
 import styles from './About.module.scss';
 import { TbMail } from 'react-icons/tb';
 
+/**
+ * About Component - Introduces the developer with background and statistics
+ * 
+ * Displays:
+ * - Professional background and experience narrative
+ * - Key statistics (years of experience, GitHub stars, projects, contributions)
+ * - Call-to-action button for collaboration
+ * - Animated stat counters for visual interest
+ * 
+ * @component
+ * @returns {React.ReactElement} The about section with biographical content
+ * 
+ * @example
+ * // Usage in page layout
+ * <section id="about">
+ *   <About />
+ * </section>
+ */
 const About: React.FC = () => {
+  /**
+   * Statistics data representing key achievements and metrics
+   * @type {Array<{number: string, label: string}>}
+   */
+  const stats = [
+    { number: '8+', label: 'Years Experience' },
+    { number: '1K+', label: 'GitHub Stars' },
+    { number: '6', label: 'Open Source Projects' },
+    { number: '447', label: 'Contributions This Year' }
+  ];
+
   return (
     <section className={styles.about}>
       <div className="container">
@@ -26,23 +55,14 @@ const About: React.FC = () => {
               and exploring new technologies like Go, Elixir, Docker, Kubernetes, and cloud-native solutions.
             </p>
 
+            {/** Stats showcase with key metrics and achievements */}
             <div className={styles.stats}>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>8+</span>
-                <span className={styles.statLabel}>Years Experience</span>
-              </div>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>1K+</span>
-                <span className={styles.statLabel}>GitHub Stars</span>
-              </div>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>6</span>
-                <span className={styles.statLabel}>Open Source Projects</span>
-              </div>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>447</span>
-                <span className={styles.statLabel}>Contributions This Year</span>
-              </div>
+              {stats.map((stat, index) => (
+                <div key={index} className={styles.statItem}>
+                  <span className={styles.statNumber}>{stat.number}</span>
+                  <span className={styles.statLabel}>{stat.label}</span>
+                </div>
+              ))}
             </div>
 
             <a href="mailto:mat.andrade@live.com" className={styles.contactButton}>
