@@ -33,10 +33,10 @@ Visit the live portfolio at: **[mcodex.dev](https://mcodex.dev)**
 
 This portfolio showcases several open-source projects including:
 
-- **[react-native-sensitive-info](https://github.com/mCodex/react-native-sensitive-info)** - Secure keychain/keystore storage for React Native (987⭐)
-- **[react-native-inappbrowser-nitro](https://github.com/mCodex/react-native-inappbrowser-nitro)** - Lightning-fast in-app browser with Nitro Modules
-- **[react-native-rooster](https://github.com/mCodex/react-native-rooster)** - Toast notification library for React Native (29⭐)
-- **[react-native-plugpag-nitro](https://github.com/mCodex/react-native-plugpag-nitro)** - High-performance PagSeguro payment integration
+- **[react-native-sensitive-info](https://github.com/mCodex/react-native-sensitive-info)** - Secure keychain/keystore storage for React Native (1005⭐)
+- **[react-native-inappbrowser-nitro](https://github.com/mCodex/react-native-inappbrowser-nitro)** - Lightning-fast in-app browser with Nitro Modules (17⭐)
+- **[react-native-rooster](https://github.com/mCodex/react-native-rooster)** - Toast notification library for React Native (32⭐)
+- **[react-native-plugpag-nitro](https://github.com/mCodex/react-native-plugpag-nitro)** - High-performance PagSeguro payment integration (1⭐)
 
 ## 🏃‍♂️ Quick Start
 
