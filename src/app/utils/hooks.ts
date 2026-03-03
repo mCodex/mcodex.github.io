@@ -1,21 +1,21 @@
 /**
  * React Hooks - Custom hooks for common patterns
- * 
+ *
  * These hooks encapsulate logic to be reused across components
  * following React best practices and the DRY principle.
  */
 
-import { useEffect, useState, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 /**
  * Hook to detect if user has scrolled past a certain threshold
- * 
+ *
  * @param threshold - Scroll distance in pixels to trigger detection (default: 50)
  * @returns Boolean indicating if scrolled past threshold
- * 
+ *
  * @example
  * const isScrolled = useScrollDetection(100);
- * 
+ *
  * // Add shadow to navbar on scroll
  * return (
  *   <nav className={isScrolled ? 'scrolled' : ''}>
@@ -40,13 +40,13 @@ export const useScrollDetection = (threshold: number = 50): boolean => {
 
 /**
  * Hook to check if a media query matches
- * 
+ *
  * @param query - CSS media query string
  * @returns Boolean indicating if query matches
- * 
+ *
  * @example
  * const isMobile = useMediaQuery('(max-width: 48rem)');
- * 
+ *
  * return (
  *   <div>
  *     {isMobile ? <MobileNav /> : <DesktopNav />}
@@ -82,14 +82,14 @@ export const useMediaQuery = (query: string): boolean => {
 
 /**
  * Hook to track click-outside behavior
- * 
+ *
  * @param ref - React ref to the element
  * @param callback - Function to call when click outside happens
- * 
+ *
  * @example
  * const ref = useRef(null);
  * useClickOutside(ref, () => setIsOpen(false));
- * 
+ *
  * return (
  *   <div ref={ref} className="menu">
  *     Menu content
@@ -98,7 +98,7 @@ export const useMediaQuery = (query: string): boolean => {
  */
 export const useClickOutside = (
   ref: React.RefObject<HTMLElement>,
-  callback: () => void
+  callback: () => void,
 ): void => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent): void => {
@@ -114,13 +114,13 @@ export const useClickOutside = (
 
 /**
  * Hook to manage boolean state with callbacks
- * 
+ *
  * @param initialValue - Initial state value (default: false)
  * @returns Tuple of [value, open, close, toggle]
- * 
+ *
  * @example
  * const [isOpen, open, close, toggle] = useToggle(false);
- * 
+ *
  * return (
  *   <>
  *     <button onClick={toggle}>Toggle Menu</button>
@@ -129,7 +129,7 @@ export const useClickOutside = (
  * );
  */
 export const useToggle = (
-  initialValue: boolean = false
+  initialValue: boolean = false,
 ): [boolean, () => void, () => void, () => void] => {
   const [value, setValue] = useState(initialValue);
 
@@ -142,13 +142,13 @@ export const useToggle = (
 
 /**
  * Hook to prevent body scroll
- * 
+ *
  * @param shouldPrevent - Boolean to enable/disable scroll prevention
- * 
+ *
  * @example
  * const [isOpen, setIsOpen] = useState(false);
  * usePreventScroll(isOpen);
- * 
+ *
  * return (
  *   <>
  *     <button onClick={() => setIsOpen(true)}>Open Modal</button>
@@ -172,23 +172,23 @@ export const usePreventScroll = (shouldPrevent: boolean): void => {
 
 /**
  * Hook to get and update localStorage
- * 
+ *
  * @param key - LocalStorage key
  * @param initialValue - Initial value if not in storage
  * @returns Tuple of [value, setValue, removeValue]
- * 
+ *
  * @example
  * const [theme, setTheme, removeTheme] = useLocalStorage('theme', 'light');
- * 
+ *
  * return (
  *   <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
  *     Toggle Theme: {theme}
  *   </button>
  * );
  */
-export const useLocalStorage = <T,>(
+export const useLocalStorage = <T>(
   key: string,
-  initialValue: T
+  initialValue: T,
 ): [T, (value: T) => void, () => void] => {
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
@@ -209,7 +209,7 @@ export const useLocalStorage = <T,>(
         console.warn(`Error setting localStorage key "${key}":`, error);
       }
     },
-    [key]
+    [key],
   );
 
   const removeValue = useCallback(() => {

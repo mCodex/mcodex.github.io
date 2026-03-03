@@ -1,49 +1,48 @@
 /**
  * Utils barrel export
- * 
+ *
  * Central export point for all utilities to simplify imports
  * across the application.
- * 
+ *
  * @example
  * // Instead of
  * import { smoothScrollToElement } from '@/utils/scroll';
  * import { useScrollDetection } from '@/utils/hooks';
- * 
+ *
  * // Use
  * import { smoothScrollToElement, useScrollDetection } from '@/utils';
  */
 
-// Scroll utilities
-export { 
-  smoothScrollToElement, 
-  smoothScrollToTop,
-  isElementVisible,
-  getScrollPercentage 
-} from './scroll';
-
 // React hooks
 export {
-  useScrollDetection,
-  useMediaQuery,
   useClickOutside,
-  useToggle,
+  useLocalStorage,
+  useMediaQuery,
   usePreventScroll,
-  useLocalStorage
+  useScrollDetection,
+  useToggle,
 } from './hooks';
+// Scroll utilities
+export {
+  getScrollPercentage,
+  isElementVisible,
+  smoothScrollToElement,
+  smoothScrollToTop,
+} from './scroll';
 
 // Types
 export type {
-  Project,
-  StatItem,
-  SocialLink,
-  NavLink,
-  Skill,
+  AnimationConfig,
+  ApiResponse,
+  BadgeProps,
   ButtonProps,
   CardProps,
-  BadgeProps,
-  AnimationConfig,
-  ThemeConfig,
-  ApiResponse,
+  FormField,
+  NavLink,
   PaginationState,
-  FormField
+  Project,
+  Skill,
+  SocialLink,
+  StatItem,
+  ThemeConfig,
 } from './types';

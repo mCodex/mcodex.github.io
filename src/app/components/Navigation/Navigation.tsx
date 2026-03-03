@@ -1,21 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Navigation.module.scss';
 
 /**
  * Navigation Component - Fixed header with responsive navigation menu
- * 
+ *
  * Features:
  * - Fixed positioning with scroll detection for enhanced styling
  * - Mobile-responsive hamburger menu with smooth animations
  * - Smooth scroll to section navigation
  * - Backdrop blur for modern glassmorphism effect
  * - Dynamic styling based on scroll position
- * 
+ *
  * @component
  * @returns {React.ReactElement} Navigation bar with menu overlay
- * 
+ *
  * @example
  * // Usage in layout
  * <Navigation />
@@ -23,7 +23,7 @@ import styles from './Navigation.module.scss';
 const Navigation: React.FC = () => {
   /** State for mobile menu visibility */
   const [isOpen, setIsOpen] = useState(false);
-  
+
   /** State for scroll detection - triggers header styling changes */
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -71,57 +71,40 @@ const Navigation: React.FC = () => {
       <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
         <div className="container">
           <div className={styles.navContent}>
-            <a 
-              href="#home" 
+            <button
+              type="button"
               className={styles.logo}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('home');
-              }}
+              onClick={() => scrollToSection('home')}
             >
               mCodex
-            </a>
+            </button>
 
             <ul className={`${styles.navLinks} ${isOpen ? styles.open : ''}`}>
               <li className={styles.navLink}>
-                <a 
-                  href="#home"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('home');
-                  }}
-                >
+                <button type="button" onClick={() => scrollToSection('home')}>
                   Home
-                </a>
+                </button>
               </li>
               <li className={styles.navLink}>
-                <a 
-                  href="#projects"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('projects');
-                  }}
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('projects')}
                 >
                   Projects
-                </a>
+                </button>
               </li>
               <li className={styles.navLink}>
-                <a 
-                  href="#about"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('about');
-                  }}
-                >
+                <button type="button" onClick={() => scrollToSection('about')}>
                   About
-                </a>
+                </button>
               </li>
               <li className={styles.navLink}>
                 <a href="mailto:mat.andrade@live.com">Contact</a>
               </li>
             </ul>
 
-            <button 
+            <button
+              type="button"
               className={`${styles.menuToggle} ${isOpen ? styles.open : ''}`}
               onClick={toggleMenu}
               aria-label="Toggle menu"
@@ -134,9 +117,14 @@ const Navigation: React.FC = () => {
         </div>
       </nav>
 
-      <div 
+      <button
+        type="button"
         className={`${styles.overlay} ${isOpen ? styles.open : ''}`}
         onClick={closeMenu}
+        onKeyUp={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') closeMenu();
+        }}
+        aria-label="Close menu"
       />
     </>
   );

@@ -1,6 +1,6 @@
 /**
  * TypeScript Types and Interfaces
- * 
+ *
  * Central location for all shared types to maintain consistency
  * across components and utilities.
  */
@@ -58,7 +58,8 @@ export interface Skill {
 /**
  * Component props for common UI patterns
  */
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   href?: string;

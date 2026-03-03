@@ -1,10 +1,9 @@
-
+import { TbBrandGithub, TbBrandLinkedin } from 'react-icons/tb';
 import styles from './Footer.module.scss';
-import { TbBrandGithub, TbBrandLinkedin, TbBrandX } from 'react-icons/tb';
 
 /**
  * Footer Component - Site footer with social links, contact info, and navigation
- * 
+ *
  * Features:
  * - Responsive grid layout for desktop and mobile
  * - Social media links with hover animations
@@ -12,10 +11,10 @@ import { TbBrandGithub, TbBrandLinkedin, TbBrandX } from 'react-icons/tb';
  * - Contact information
  * - Copyright and attribution
  * - Modern glassmorphism effects and gradients
- * 
+ *
  * @component
  * @returns {React.ReactElement} The footer section with all meta information
- * 
+ *
  * @example
  * // Usage at the bottom of pages
  * <Footer />
@@ -30,15 +29,15 @@ const Footer: React.FC = () => {
    */
   const socialLinks = [
     {
-      href: "https://github.com/mcodex",
-      label: "GitHub",
-      icon: TbBrandGithub
+      href: 'https://github.com/mcodex',
+      label: 'GitHub',
+      icon: TbBrandGithub,
     },
     {
-      href: "https://www.linkedin.com/in/mat-andrade/",
-      label: "LinkedIn",
-      icon: TbBrandLinkedin
-    }
+      href: 'https://www.linkedin.com/in/mat-andrade/',
+      label: 'LinkedIn',
+      icon: TbBrandLinkedin,
+    },
   ];
 
   return (
@@ -54,10 +53,10 @@ const Footer: React.FC = () => {
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
-                <a 
+                <a
                   key={social.label}
-                  href={social.href} 
-                  target="_blank" 
+                  href={social.href}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
                   aria-label={social.label}
@@ -71,7 +70,9 @@ const Footer: React.FC = () => {
 
           <div className={styles.contact}>
             <h4>Get In Touch</h4>
-            <p><a href="mailto:mat.andrade@live.com">mat.andrade@live.com</a></p>
+            <p>
+              <a href="mailto:mat.andrade@live.com">mat.andrade@live.com</a>
+            </p>
             <p>Available for freelance work</p>
           </div>
         </div>
@@ -83,7 +84,9 @@ const Footer: React.FC = () => {
             <a href="#about">About</a>
             <a href="mailto:mat.andrade@live.com">Contact</a>
           </div>
-          <p>© {currentYear} mCodex. All rights reserved. Built with Next.js & ❤️</p>
+          <p>
+            © {currentYear} mCodex. All rights reserved. Built with Next.js & ❤️
+          </p>
         </div>
       </div>
     </footer>

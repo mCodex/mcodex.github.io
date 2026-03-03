@@ -17,18 +17,18 @@ interface Sparkle {
   id: number;
   x: number;
   y: number;
-  size: number;  // 0.3-0.7px - extremely discrete
-  duration: number;  // 5-8 seconds - very slow
-  delay: number;  // 0-6 seconds - staggered
+  size: number; // 0.3-0.7px - extremely discrete
+  duration: number; // 5-8 seconds - very slow
+  delay: number; // 0-6 seconds - staggered
 }
 
 /**
  * SparkleBackground Component - Animated background with very subtle twinkling sparkles
- * 
+ *
  * Creates a discrete, magical background effect with minimally positioned
  * sparkles that animate with varying durations and delays. Inspired by
  * Apple's liquid glass aesthetic with understated animated accents.
- * 
+ *
  * Features:
  * - Configurable number of sparkles (minimal by default)
  * - Random positioning and animation timing
@@ -36,14 +36,14 @@ interface Sparkle {
  * - Responsive to viewport size
  * - WCAG 2.2 compliant (no excessive flashing)
  * - Minimal JavaScript overhead
- * 
+ *
  * @component
  * @returns {React.ReactElement} SVG-based subtle sparkle background
- * 
+ *
  * @example
  * // Usage in hero or full-screen sections
  * <SparkleBackground count={6} />
- * 
+ *
  * @param {number} [count=6] - Number of sparkles to render (default: 6 for maximum subtlety)
  */
 const SparkleBackground: React.FC<{ count?: number }> = ({ count = 6 }) => {
@@ -63,9 +63,9 @@ const SparkleBackground: React.FC<{ count?: number }> = ({ count = 6 }) => {
         id: index,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 0.4 + 0.3,  // 0.3-0.7px (even smaller)
-        duration: Math.random() * 3 + 5,  // 5-8 seconds (much slower)
-        delay: Math.random() * 6,         // Up to 6 second delay for more stagger
+        size: Math.random() * 0.4 + 0.3, // 0.3-0.7px (even smaller)
+        duration: Math.random() * 3 + 5, // 5-8 seconds (much slower)
+        delay: Math.random() * 6, // Up to 6 second delay for more stagger
       }));
     };
 
@@ -76,11 +76,14 @@ const SparkleBackground: React.FC<{ count?: number }> = ({ count = 6 }) => {
     <div className={styles.sparkleBackgroundContainer}>
       <svg
         className={styles.sparkleBackground}
+        role="img"
+        aria-label="Sparkle background decorative effect"
         width="100%"
         height="100%"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
+        <title>Sparkle background decorative effect</title>
         <defs>
           {/* Gradient definition for sparkle glow - very subtle */}
           <radialGradient id="sparkleGradient" r="50%">
@@ -98,11 +101,13 @@ const SparkleBackground: React.FC<{ count?: number }> = ({ count = 6 }) => {
             r={sparkle.size}
             fill="url(#sparkleGradient)"
             className={styles.sparkle}
-            style={{
-              '--duration': `${sparkle.duration}s`,
-              '--delay': `${sparkle.delay}s`,
-              '--size': `${sparkle.size}`,
-            } as React.CSSProperties & { [key: string]: string }}
+            style={
+              {
+                '--duration': `${sparkle.duration}s`,
+                '--delay': `${sparkle.delay}s`,
+                '--size': `${sparkle.size}`,
+              } as React.CSSProperties & { [key: string]: string }
+            }
           />
         ))}
       </svg>
