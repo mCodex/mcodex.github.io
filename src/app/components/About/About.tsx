@@ -33,7 +33,7 @@ const About: React.FC = () => {
     { number: '9+', label: 'Years Experience' },
     { number: totalStars, label: 'GitHub Stars' },
     { number: '6', label: 'Open Source Projects' },
-    { number: '447', label: 'Contributions This Year' },
+    { number: '1257', label: 'Contributions This Year' },
   ];
 
   return (
